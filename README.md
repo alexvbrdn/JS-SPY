@@ -1,4 +1,11 @@
-JS-SPY
+JS SPY
 ======
+By developing this, I want to show how easy it is to track and stole personal informations by injecting a simple Javascript. The hacker has to install an add-on/plugin on the victim's web browser which can inject every page the victim will visit with this script.
 
-A small Javascript spy that can send the current location and all the value of the inputs when they are changed on a web page to a server. Can be used as a keylogger.
+Peoples have to be more careful about their web browser, too many free software install add-on/plugin on our browsers without our agreement.
+
+*Tested on Firefox, Chrome and Internet Explorer.*
+
+*For testing purpose only.*
+
+*I am not responsible for what you do with this script.*
